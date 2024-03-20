@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.HBox?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.mypj.dictionaryversion2.controller.DictionaryController">
+    <left>
+        <AnchorPane prefHeight="500.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="60.0" prefWidth="220.0" style="-fx-background-color: #3F2B6A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <Text fill="WHITE" layoutX="33.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Advanced English" AnchorPane.leftAnchor="33.0">
+                            <font>
+                                <Font size="15.0" />
+                            </font></Text>
+                        <Text fill="WHITE" layoutX="152.14648437500006" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dictionary" AnchorPane.rightAnchor="9.274999999999949">
+                            <font>
+                                <Font name="System Bold" size="15.0" />
+                            </font>
+                        </Text>
+<!--                        <FontAwesomeIconView fill="WHITE" glyphName="XING" layoutX="14.0" layoutY="40.0" size="30" AnchorPane.leftAnchor="10.0" />-->
+                    </children>
+                </AnchorPane>
+                <SplitPane dividerPositions="0.09169708029197081" layoutX="22.0" layoutY="92.0" orientation="VERTICAL" prefHeight="500.0" prefWidth="234.4" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="82.0" prefWidth="233.0">
+                            <children>
+                                <HBox alignment="CENTER_LEFT" layoutX="16.0" layoutY="-3.0" prefHeight="65.0" prefWidth="232.8" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+<!--                                        <Button fx:id="api" mnemonicParsing="false" onAction="#searchAPI" prefHeight="34.0" prefWidth="45.0" text="API">-->
+                                        <Button fx:id="api" mnemonicParsing="false" prefHeight="34.0" prefWidth="45.0" onAction="#handleLookUpAction" text="API">
+                                        <font>
+                                                <Font name="System Bold" size="15.0" />
+                                            </font>
+                                        </Button>
+<!--                                        <TextField fx:id="textFieldSearch" onDragEntered="#suggestedWord" onKeyPressed="#suggestedWord" onKeyReleased="#suggestedWord" onTouchPressed="#findWordSearch" prefHeight="34.0" prefWidth="152.0" promptText="Type here to search" style="-fx-background-color: transparent; -fx-border-color: #3F2B6A;" />-->
+                                        <TextField fx:id="txtWord" prefHeight="34.0" onKeyReleased = "#searchFilterList" prefWidth="152.0" promptText="Type here to search" style="-fx-background-color: transparent; -fx-border-color: #3F2B6A;" />
+<!--                                        <Button mnemonicParsing="false" onAction="#findWordSearch" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">-->
+                                        <Button mnemonicParsing="false" prefHeight="34.0" prefWidth="35.0" style="-fx-background-color: transparent;">
+
+                                        <graphic>
+<!--                                                <FontAwesomeIconView fill="#2a1c42" glyphName="SEARCH" size="20" text="" wrappingWidth="16.97151279449463" />-->
+                                            </graphic>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="30.0" prefWidth="233.0">
+                            <children>
+<!--                                <ListView fx:id="listView" layoutX="16.0" layoutY="-3.0" onDragEntered="#findWordSearch" prefHeight="398.0" prefWidth="233.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">-->
+                                <ListView fx:id="listViewWords" layoutX="16.0" layoutY="-3.0"
+                                          prefHeight="398.0" prefWidth="233.0"
+                                          AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-3.0">
+                                </ListView>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </AnchorPane>
+    </left>
+    <center>
+        <AnchorPane prefHeight="500.0" prefWidth="374.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #2A1C42;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0">
+                            <children>
+<!--                                <Button mnemonicParsing="false" onAction="#changeScene" style="-fx-background-color: transparent;" textFill="WHITE">-->
+                                <Button mnemonicParsing="false" style="-fx-background-color: transparent;" textFill="WHITE">
+                                <graphic>
+<!--                                        <FontAwesomeIconView fill="WHITE" glyphName="LIST" size="20" text="" wrappingWidth="31.942843437194824" />-->
+                                    </graphic>
+                                </Button>
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Difinition">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </HBox>
+                    </children></AnchorPane>
+                <SplitPane dividerPositions="0.09169708029197081" layoutX="86.0" layoutY="98.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                    <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <HBox alignment="CENTER_RIGHT" layoutX="110.0" layoutY="-31.0" prefHeight="40.0" prefWidth="364.0" AnchorPane.bottomAnchor="-2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <children>
+<!--                                        <FontAwesomeIconView glyphName="MUSIC" size="18" wrappingWidth="21.285714149475098" />-->
+<!--                                        <Button layoutX="1.0" mnemonicParsing="false" onAction="#soundAPI" text="API">-->
+                                        <Button layoutX="1.0" mnemonicParsing="false" onAction="#handleDel" text="Del">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </HBox.margin>
+                                        </Button>
+<!--                                        <Button mnemonicParsing="false" onAction="#Speechs" text="US">-->
+                                        <Button mnemonicParsing="false" onAction="#handleAdd" text="ADD">
+                                            <HBox.margin>
+                                                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                            </HBox.margin>
+                                        </Button>
+                                    </children>
+                                    <padding>
+                                        <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                            <children>
+                                <TextArea fx:id="txtDefinition" layoutX="-15.0" prefHeight="395.0" prefWidth="365.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-15.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="21.0" />
+                                    </font></TextArea>
+                            </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </AnchorPane>
+    </center>
+
+</BorderPane>
+<!--<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"-->
+<!--      fx:controller="com.mypj.dictionaryversion2.controller.DictionaryController">-->
+<!--    &lt;!&ndash; Ô nhập từ &ndash;&gt;-->
+<!--    <TextField fx:id="txtWord" promptText="Enter a word" />-->
+
+<!--    &lt;!&ndash; Ô giải nghĩa &ndash;&gt;-->
+<!--    <TextArea fx:id="txtDefinition" promptText="Definition appears here" wrapText="true" editable="true" />-->
+
+<!--    &lt;!&ndash; Hộp chứa nút bấm &ndash;&gt;-->
+<!--    <HBox spacing="10" alignment="center">-->
+<!--        <Button text="Look Up" fx:id="btnLookUp" onAction="#handleLookUpAction"/>-->
+<!--    </HBox>-->
+<!--    <HBox spacing="10" alignment="center">-->
+<!--        <Button text="Add" fx:id="btnAdd" onAction="#handleAdd"/>-->
+<!--    </HBox>-->
+<!--</VBox>-->
